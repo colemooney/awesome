@@ -6,6 +6,15 @@
 <p>Welcome to <%= title %></p>
 <p>How's it hangin</p>
 
+<ul>
+    <% for(var i=0; i<result.length; i++) { %>
+        <li>
+            <%= result[i].title %>
+        </li>
+    <% } %>
+</ul>
+
+
 <footer class="footer page-footer font-small cyan darken-3">
     <% include ./partials/footer %>
 </footer>

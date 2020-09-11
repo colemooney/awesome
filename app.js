@@ -7,7 +7,7 @@ const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 
-
+mongoose.Promise = Promise;
 mongoose.connect('mongodb://localhost/coleture');
 
 const app = express();
