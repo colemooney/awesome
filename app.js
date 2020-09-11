@@ -19,6 +19,7 @@ app.set('view engine', 'ejs');
 // default value for title local
 app.locals.title = 'Coleture';
 app.locals.home = 'Coleture Home';
+app.locals.posts = 'Coleture News'
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,6 +32,8 @@ app.use(layouts);
 
 const index = require('./routes/index');
 app.use('/', index);
+const posts = require('./routes/posts');
+app.use('/', posts);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
