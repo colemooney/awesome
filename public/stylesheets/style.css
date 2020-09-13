@@ -12,3 +12,7 @@ a {
     width: 100%;
     line-height: 60px;
 }
+.post-title{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

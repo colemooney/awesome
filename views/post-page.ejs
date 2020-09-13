@@ -5,15 +5,16 @@
 <h1><%= posts %></h1>
 <p>Welcome to <%= title %></p>
 <p>How's it hangin</p>
-
-<ul>
+<div class="post-title">
+<ul style="list-style-type: none;">
     <% for(var i=0; i<result.length; i++) { %>
         <li>
-            <%= result[i].title %>
+           <h3> <a href='/posts/<%= result[i]._id %>'><%= result[i].title %> </a></h3>
+           <span> <%= result[i].author %></span>
         </li>
     <% } %>
 </ul>
-
+</div>
 
 <footer class="footer page-footer font-small cyan darken-3">
     <% include ./partials/footer %>
