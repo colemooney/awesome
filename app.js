@@ -34,6 +34,8 @@ const index = require('./routes/index');
 app.use('/', index);
 const posts = require('./routes/posts');
 app.use('/', posts);
+const podcasts = require('./routes/podcasts');
+app.use('/', podcasts);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
