@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 30px 50px 50px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -114,4 +114,9 @@ margin-bottom: 40px;
 font-size: 26px;
 line-height: 30px;
 font-weight: 800;
+}
+.formcss{
+  display: flex;
+  justify-content: center;
+  margin: 10% 10% 17% 10%
 }

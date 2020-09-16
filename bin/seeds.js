@@ -1,5 +1,5 @@
 
-const Post = require('../models/Post')
+
 const mongoose = require('mongoose');
 
 
@@ -9,27 +9,24 @@ mongoose
   .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to mongo', err));
 
-  var postData = [{
-    title: 'Amazing article',
-    image: 'Judd funny pic',
-    text: 'Lorem Ipsum',
-    author: 'Judd Apatow'
-}, {
-    title: 'Did You Hear about michael jackson',
-    image: 'Martin sad pic',
-    text: 'Filler text',
-    author: 'Scorcese'
-}, {
-    title: 'Terrific News',
-    image: 'Wes spicy pic',
-    text: 'Lines up lines',
-    author: "Anderson"
-}]
-console.log(postData)
+  const User = mongoose.model('User', {
+    username: String,
+    password: String,
+    isAdmin: Boolean,
+    image: String,
+    email: String,
+    realName: String,
+    googleID: String
+  });
 
-// Post.deleteMany({}, () => null)
-// Post.Create(postData)
-// Celebrity.deleteMany({}, () => null)
-postData.map(data => Post.create(data))
-// celebrityData.map(data => Celebrity.create(data))
-// mongoose.connection.close()
+
+
+
+  User.create({
+    username: "admin", 
+    password: "admin", 
+    isAdmin: true, 
+    image: "", 
+    email: "deez@nutz.com",
+    realName: "Jeff",
+         }) 

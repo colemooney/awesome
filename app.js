@@ -38,6 +38,8 @@ const podcasts = require('./routes/podcasts');
 app.use('/', podcasts);
 const about = require('./routes/about');
 app.use('/', about);
+const user = require('./routes/user');
+app.use('/', user);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
