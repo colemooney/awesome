@@ -1,20 +1,37 @@
-const express      = require('express');
-const path         = require('path');
-const favicon      = require('serve-favicon');
-const logger       = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
+// const express      = require('express');
+// const path         = require('path');
+// const favicon      = require('serve-favicon');
+// const logger       = require('morgan');
+// const cookieParser = require('cookie-parser');
+// const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
+// const mongoose     = require('mongoose');
+
+// const flash        = require("connect-flash");
+// const session      = require("express-session");
+
+// const MongoStore   = require("connect-mongo")(session);
+// const bcrypt = require("bcrypt");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
+const bodyParser   = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express      = require('express');
+const favicon      = require('serve-favicon');
+const hbs          = require('hbs');
 const mongoose     = require('mongoose');
-
-const flash        = require("connect-flash");
+const logger       = require('morgan');
+const path         = require('path');
 const session      = require("express-session");
-
 const MongoStore   = require("connect-mongo")(session);
+const flash        = require("connect-flash");
+
 const bcrypt = require("bcrypt");
+
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+// const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 
 
 mongoose.Promise = Promise;
@@ -79,44 +96,31 @@ passport.use(new LocalStrategy((username, password, next) => {
   });
 }));
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "/google/callback"
-    },
-    (accessToken, refreshToken, profile, done) => {
-      // to see the structure of the data in received response:
-      console.log("Google account details:", profile);
-
-      User.findOne({ googleID: profile.id })
-      
-        .then(user => {
-          if (user) {
-            done(null, user);
-            return;
-          }
-          let theImage = "";
-          if(profile.photos){
-            theImage = profile.photos[0].value;
-          }
-            
-          User.create({ googleID: profile.id,
-            isAdmin: false,
-            image: theImage,
-            username: profile._json.name
-          
-          })
-            .then(newUser => {
-              done(null, newUser);
-            })
-            .catch(err => done(err)); // closes User.create()
-        })
-        .catch(err => done(err)); // closes User.findOne()
-    }
-  )
-);
+// passport.use(
+//   new GoogleStrategy({
+//           clientID: process.env.GOOGLE_OATH_CLIENT_ID,
+//           clientSecret: process.env.GOOGLE_OATH_CLIENT_SECRET,
+//           callbackURL: process.env.GOOGLE_OATH_CALLBACK
+//       },
+//       (accessToken, refreshToken, profile, done) => {
+//           User.findOne({ googleID: profile.id })
+//               .then(user => {
+//                   let userData = { googleID: profile.id, username: profile._json.name, email: profile._json.email, role: 'User' }
+//                   if (profile.photos) userData.image = profile.photos[0].value
+//                   if (user) {
+//                       done(null, user);
+//                       return;
+//                   }
+//                   User.create(userData)
+//                       .then(newUser => {
+//                           done(null, newUser);
+//                       })
+//                       .catch(err => done(err));
+//               })
+//               .catch(err => done(err));
+//       }
+//   )
+// );
 
 
 const index = require('./routes/index');
