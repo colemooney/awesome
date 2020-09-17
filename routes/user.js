@@ -42,7 +42,7 @@ console.log(req.body)
 
     newUser.save((err) => {
       if (err) {
-        res.render("/signup", { message: "Something went wrong" });
+        res.render("signup", { message: "Something went wrong" });
       } else {
         res.redirect("/");
       }
@@ -54,7 +54,7 @@ console.log(req.body)
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("/login");
+  res.render("login");
 });
 
 router.post("/login", passport.authenticate("local", {
@@ -65,6 +65,6 @@ router.post("/login", passport.authenticate("local", {
 }));
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.redirect("login");
 });
 module.exports = router;
