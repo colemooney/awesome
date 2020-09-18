@@ -6,6 +6,7 @@ const User           = require("../models/User.js");
 const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
 const passport = require("passport");
+const ensureLogin = require("connect-ensure-login");
 
 router.get('/signup', (req, res, next)=>{
   
@@ -67,4 +68,9 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("login");
 });
+
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("private", { user: req.user });
+});
+
 module.exports = router;
