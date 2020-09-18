@@ -39,6 +39,12 @@
           </li>
           <li><a href="/podcasts">Podcast</a></li>
           <li><a href="/about">About Me</a></li>
+          
+
+          <% if (user) { %>
+            <li><a>Logged In</a></li>
+          <% } %>
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

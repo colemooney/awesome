@@ -74,6 +74,7 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser((id, cb) => {
+
   User.findById(id, (err, user) => {
     if (err) { return cb(err); }
     cb(null, user);
@@ -81,6 +82,7 @@ passport.deserializeUser((id, cb) => {
 });
 
 passport.use(new LocalStrategy((username, password, next) => {
+  
   User.findOne({ username }, (err, user) => {
     if (err) {
       return next(err);
