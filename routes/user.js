@@ -60,13 +60,14 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
+  
   successRedirect: "/",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
 router.use((req, res, next) => {
-  console.log(req.user, "meeeeeeee")
+  
   if (req.user) { 
     next(); 
   } else {

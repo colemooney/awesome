@@ -7,6 +7,7 @@
 const layouts      = require('express-ejs-layouts');
 // const mongoose     = require('mongoose');
 
+
 // const flash        = require("connect-flash");
 // const session      = require("express-session");
 
@@ -47,6 +48,7 @@ app.set('view engine', 'ejs');
 app.locals.title = 'Coleture';
 app.locals.home = 'Coleture Home';
 app.locals.posts = 'Coleture News'
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
