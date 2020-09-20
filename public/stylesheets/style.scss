@@ -1,9 +1,49 @@
-body {
-  padding: 30px 50px 50px 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0;
+html {
+  overflow: hidden;
 }
-
+body {
+  margin: 0;
+  font-size: 26px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #ffffff;
+  height: 100vh;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+.parallax-wrapper {
+  width: 100vw;
+  height:100vh;
+  padding-top:20vh;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
+.parallax-wrapper::before {
+  content:"";
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left:0;
+  background-image: url("https://i.guim.co.uk/img/media/327e46c3ab049358fad80575146be9e0e65686e7/0_56_1023_614/master/1023.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=094ddc96f89a1ea9a4f68d1b585d1f97");
+  position: absolute;
+  z-index: -1;
+  transform:translateZ(-1px) scale(2);
+}
+.regular-wrapper {
+  width: 100vw;
+  height:100vh;
+  padding-top:20vh;
+  background-image: url("/trianglify2.png");
+  z-index: 2;
+  position: relative;
+}
+.content {
+  margin: 0 auto;
+  padding: 50px;
+  width: 50%;
+  background: #aaa;
+}
 a {
   color: #00B7FF;
 }
@@ -128,26 +168,28 @@ font-weight: 800;
   margin-bottom: 5px;
 }
 
-.parallax-wrapper{
-  width: 100vh;
-  height: 100vw;
-  padding-top: 20vh;
-  box-sizing: border-box;
-}
-.parallax-wrapper::before{
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  top:0;
-  left:0;
-  background-image: url('https://i.guim.co.uk/img/media/327e46c3ab049358fad80575146be9e0e65686e7/0_56_1023_614/master/1023.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=094ddc96f89a1ea9a4f68d1b585d1f97');
-  position: absolute;
-  z-index: -1;
-}
+// .parallax-wrapper{
+//   width: 100vh;
+//   height: 100vw;
+//   padding-top: 20vh;
+//   box-sizing: border-box;
+//   transform-style: preserve-3d;
+// }
+// .parallax-wrapper::before{
+//   content: "";
+//   width: 100vw;
+//   height: 100vh;
+//   top:0;
+//   left:0;
+//   background-image: url('https://i.guim.co.uk/img/media/327e46c3ab049358fad80575146be9e0e65686e7/0_56_1023_614/master/1023.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=094ddc96f89a1ea9a4f68d1b585d1f97');
+//   position: absolute;
+//   z-index: -1;
+//   transform:translateZ(-1px) scale(2);
+// }
 
-.content-wrapper{
-  margin: 0 auto;
-  padding: 50px;
-  width: 50%;
-  background: #aaa;
-}
+// .content-wrapper{
+//   margin: 0 auto;
+//   padding: 50px;
+//   width: 50%;
+//   background: #aaa;
+// }
